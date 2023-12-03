@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="index.php?m=Usuario&f=login" class="form" method="post">
+            <input type="hidden" name="m" value="Usuario">
+            <input type="hidden" name="f" value="login">
+            <h1 class="title">Inicio</h1>
+            <div class="inp">
+                <input type="text" class="input" placeholder="Usuario" name="usuario">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="inp">
+                <input type="password" class="input" placeholder="Contraseña" name="password">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <button class="submit">Iniciar Sesión</button>
+            <p class="footer">¿No tienes cuenta? <a href="index.php?m=Usuario&f=mostrarRegistro" class="link">Regístrate</a></p>
+        </form>
+        <div class="banner">
+            <div class="wel_text"><h2>BIENVENIDO</h2></div>
+            <div class="para"><p>Sumérgete en el mundo de Quiz Master</p></div>
+        </div>
+    </div>
+</body>
+</html>

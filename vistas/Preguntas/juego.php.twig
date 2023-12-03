@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas y Respuestas</title>
+    <link rel="stylesheet" href="./css/juego.css">
+</head>
+<body>
+    <input type="hidden" name="m" value="Pregunta">
+    <input type="hidden" name="f" value="mostrarPregunta">
+    <div id="header">
+        <h1>¡Desafía tu conocimiento con Quiz Master!</h1>
+    </div>
+        <div id="question-container">
+            <div id="question">{{ datos.TextoPre }}</div>
+            <div class="options">
+                <div class="option">{{ datos.RespuestaCor }}</div>
+                <!-- Agrega las demás opciones -->
+            </div>
+        </div>
+    <div class="puntuacion">
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/register.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="./index.php?m=Usuario&f=crearCuenta" class="form" method="post">
+            <input type="hidden" name="m" value="Usuario">
+            <input type="hidden" name="f" value="mostrarRegistro">
+            <h1 class="title">Regístrate</h1>
+            <div class="inp">
+                <input type="email" class="input" placeholder="Email" name="email">
+                <i class="fa solid fa-email"></i>
+            </div>
+            <div class="inp">
+                <input type="text" class="input" placeholder="Usuario" name="usuario">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="inp">
+                <input type="password" class="input" placeholder="Contraseña" name="password">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <button class="submit">Crear Cuenta</button>
+        </form>
+        <div class="banner">
+            <div class="wel_text"><h2>BIENVENIDO</h2></div>
+            <div class="para"><p>Sumérgete en el mundo de Quiz Master</p></div>
+        </div>
+    </div>
+</body>
+</html>
