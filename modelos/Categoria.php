@@ -13,4 +13,3 @@ class Categoria {
         return $this->NomCat;
     }
 }
-?>

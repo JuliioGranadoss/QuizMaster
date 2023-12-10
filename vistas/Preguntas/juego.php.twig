@@ -13,13 +13,20 @@
         <h1>¡Desafía tu conocimiento con Quiz Master!</h1>
     </div>
         <div id="question-container">
-            <div id="question">{{ datos.TextoPre }}</div>
-            <div class="options">
-                <div class="option">{{ datos.RespuestaCor }}</div>
-                <!-- Agrega las demás opciones -->
-            </div>
+            <div id="question">{{ pregunta.TextoPre }}</div>
+            <form action="index.php" method="post" class="options">
+                <input type="hidden" name="m" value="Usuario">
+                <input type="hidden" name="codigo" value="{{ pregunta.CodPre }}">
+                <input type="hidden" name="categoria" value="{{categoria}}">
+                
+                {% for respuesta in respuestas %}
+                    {{ respuesta | raw}}
+                {% endfor %}
+            </form>
         </div>
     <div class="puntuacion">
+        <h2>Puntuación</h2>
+        <div id="puntos">{{ usuario.Puntuacion }}</div>
     </div>
 </body>
 </html>

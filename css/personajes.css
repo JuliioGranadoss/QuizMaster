@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    background: linear-gradient(to right, #4a90e2, #003fa5);
+    color: #fff;
+    overflow: hidden; 
+    max-height: 70vh; 
+    overflow-y: auto; 
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around; 
+    width: 100%;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.card {
+    width: 45%; 
+    margin: 10px;
+}
+
+.card img {
+    width: 100%;
+}
+
+.card p {
+    margin-top: 10px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.jugar-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.jugar-button:hover {
+    background-color: #45a049; 
+}
+
+.boton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #4CAF50; 
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

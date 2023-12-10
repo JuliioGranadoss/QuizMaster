@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="stylesheet" href="css/perfil.css">
     <!-- Agregar tus etiquetas meta, título, enlaces a CSS, etc. según sea necesario -->
 </head>
 <body>
     <div id="header">
-        <h1>Bienvenido, {{ usuario.NomUsu }}!</h1>
+        <h1>Bienvenido, {{usuario.NomUsu}}</h1>
     </div>
+    <a href="index.php?m=Usuario&f=cerrarSesion"><button type="submit">Cerrar Sesion</button></a>
+    <a href="index.php?m=Usuario&f=borrarCuenta"><button type="submit">Borrar Cuenta</button></a>
     <!-- Agregar cualquier información adicional sobre el perfil del usuario -->
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 require_once "./database/conexion.php";
 
 class Usuario {
@@ -35,5 +36,29 @@ class Usuario {
 
     public static function registrarUsuario(string $email,string $usuario ,string $password ){
         Conexion::getConnection()->query("INSERT INTO Usuario (NomUsu, Contraseña, CorreoUsu, Puntuacion) VALUES ('$usuario', '$password', '$email', 0)");
+    }
+
+    public static function borrarCuenta(){
+        Conexion::getConnection()->query("DELETE FROM Usuario WHERE CodUsu = {$_SESSION['usuario']->getCodUsu()}");
+    }
+
+    public static function sumarPuntos(){
+        $puntuacionActual = $_SESSION['usuario']->getPuntuacion();
+        $nuevaPuntuacion = $puntuacionActual + 10;
+        $_SESSION['usuario']->setPuntuacion($nuevaPuntuacion);
+    }
+
+    public static function restarPuntos(){
+        $puntuacionActual = $_SESSION['usuario']->getPuntuacion();
+        $nuevaPuntuacion = $puntuacionActual - 10;
+        $_SESSION['usuario']->setPuntuacion($nuevaPuntuacion);
+    }
+    
+    public function setPuntuacion($nuevaPuntuacion){
+        $this->Puntuacion = $nuevaPuntuacion;
+    }
+
+    public static function getUser($usuario, $password){
+        return Conexion::getConnection()->query("SELECT * FROM Usuario WHERE NomUsu='{$usuario}' AND Contraseña='{$password}'")->getRow("Usuario");
     }
 }

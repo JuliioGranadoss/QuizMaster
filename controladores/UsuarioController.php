@@ -13,7 +13,7 @@ class UsuarioController extends Controller
         $usuario = $_POST["usuario"];
         $password = $_POST["password"];
 
-        $usr = Conexion::getConnection()->query("SELECT * FROM Usuario WHERE NomUsu='{$usuario}' AND Contraseña='{$password}'")->getRow("Usuario");
+        $usr = Usuario::getUser($usuario, $password);
 
         if ($usr) {
             $_SESSION['usuario'] = $usr;
@@ -45,11 +45,12 @@ class UsuarioController extends Controller
         $usuario = $_SESSION['usuario'];
 
         // Renderizar la vista del perfil
-        $this->render("Usuario/perfil.php.twig", ["usuario" => $usuario]);
+        $this->render("Perfil/perfil.php.twig", ["usuario" => $usuario]);
     }
 
     public function mostrarOpcionesCuenta()
     {
+        
         // Verificar si el usuario está autenticado
         if (!isset($_SESSION['usuario'])) {
             // Redirigir a la página de inicio de sesión o mostrar un mensaje de error
@@ -61,11 +62,22 @@ class UsuarioController extends Controller
         $usuario = $_SESSION['usuario'];
 
         // Renderizar la vista de opciones de cuenta
-        $this->render("Usuario/opcionesCuenta.php.twig", ["usuario" => $usuario]);
+        $this->render("Perfil/opcionesCuenta.php.twig", ["usuario" => $usuario]);
     }
 
-    public function borrarCuenta()
-    {
+    public function cerrarSesion(){
+
+        if (!isset($_SESSION['usuario'])) {
+            header("Location: index.php?m=Usuario&f=showlogin");
+            exit;
+        }
+
+        $codUsu = $_SESSION['usuario']->getCodUsu();
+
+        header("Location: index.php");
+        exit;
+    }
+    public function borrarCuenta(){
         // Verificar si el usuario está autenticado
         if (!isset($_SESSION['usuario'])) {
             // Redirigir a la página de inicio de sesión o mostrar un mensaje de error
@@ -77,10 +89,23 @@ class UsuarioController extends Controller
         $codUsu = $_SESSION['usuario']->getCodUsu();
 
         // Realizar la lógica para borrar la cuenta (puedes implementarla según tus necesidades)
-        // ...
+        Usuario::borrarCuenta();
 
         // Redirigir a la página de inicio después de borrar la cuenta
         header("Location: index.php");
         exit;
+    }
+    public function sumarPuntos(){
+        $puntuacionActual = $_SESSION['usuario']->getPuntuacion();
+        $nuevaPuntuacion = $puntuacionActual + 10;
+        $_SESSION['usuario']->setPuntuacion($nuevaPuntuacion);
+        header("Location: index.php?m=Pregunta&f=mostrarPregunta&categoria={$_POST['categoria']}");
+    }
+
+    public function restarPuntos(){
+        $puntuacionActual = $_SESSION['usuario']->getPuntuacion();
+        $nuevaPuntuacion = $puntuacionActual - 10;
+        $_SESSION['usuario']->setPuntuacion($nuevaPuntuacion);
+        header("Location: index.php?m=Pregunta&f=mostrarPregunta&categoria={$_POST['categoria']}");
     }
 }

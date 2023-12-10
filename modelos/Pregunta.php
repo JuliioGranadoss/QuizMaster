@@ -46,4 +46,10 @@ class Pregunta {
     public function getOpcionIncorrecta3(): string {
         return $this->OpcionIncorrecta3;
     }
+
+    public static function obtenerPreguntaPorCategoria($categoria, $indice) {
+        $sql = "SELECT * FROM Pregunta WHERE CodCat IN (SELECT CodCat FROM Categoria WHERE NomCat = '$categoria') LIMIT 1 OFFSET $indice";
+        $resultado = Conexion::getConnection()->query($sql)->getRow('Pregunta');
+        return $resultado;
+    }
 }
